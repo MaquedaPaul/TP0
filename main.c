@@ -13,10 +13,9 @@ int main()
     };
 
     char caracter;
+    caracter = getchar();
     do
     {
-        caracter = getchar();
-
         if (isspace(caracter) == 0)
         {
             if (caracter == ',')
@@ -24,13 +23,9 @@ int main()
                 printf("Separador: ");
                 putchar(caracter);
                 printf("\n");
+                caracter = getchar();
             }
-            if (caracter == EOF)
-            {
-                printf("Fin de texto: ");
-                putchar(caracter);
-                printf("\n");
-            }
+
             else
             {
                 printf("Cadena: ");
@@ -42,8 +37,23 @@ int main()
                 printf("\n");
             }
         }
+        else
+        {
+            caracter = getchar();
+        }
 
-        /*
+    } while (caracter != EOF);
+    if (caracter == EOF)
+    {
+        printf("Fin de texto: ");
+        putchar(caracter);
+        printf("\n");
+    }
+
+    return 0;
+}
+
+/*
     char caracter;
     caracter = getchar();
     do
@@ -82,7 +92,3 @@ int main()
     } while (caracter != EOF);
 
 */
-    } while (caracter != EOF);
-
-    return 0;
-}
