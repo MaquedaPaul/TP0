@@ -2,26 +2,87 @@
 #include <stdio.h>
 #include <ctype.h>
 
+int main()
+{
 
-int main (){
-    FILE *archivo = fopen("entrada.txt", "r");
-    if (archivo == NULL)
+    enum token
     {
-        perror("Error al abrir el archivo.");
-        return 1;
-    }
+        FDT, //Fin de texto
+        SEP, //Separador
+        CAD  //Cadena
+    };
 
     char caracter;
-
-    while (feof(caracter) == 0)
+    do
     {
-        caracter = fgetc(archivo);
-        printf("%c",caracter);
-    }
-    fclose(archivo);
-    printf("Se ha leido correctamente el archivo.");
+        caracter = getchar();
+
+        if (isspace(caracter) == 0)
+        {
+            if (caracter == ',')
+            {
+                printf("Separador: ");
+                putchar(caracter);
+                printf("\n");
+            }
+            if (caracter == EOF)
+            {
+                printf("Fin de texto: ");
+                putchar(caracter);
+                printf("\n");
+            }
+            else
+            {
+                printf("Cadena: ");
+                while (caracter != EOF && caracter != ',' && isspace(caracter) == 0)
+                {
+                    putchar(caracter);
+                    caracter = getchar();
+                }
+                printf("\n");
+            }
+        }
+
+        /*
+    char caracter;
+    caracter = getchar();
+    do
+    {
+        caracter = getchar();
+        if (isspace(caracter) == 0)
+        {
+            if (caracter == ',')
+            {
+                printf("Separador: ");
+                putchar(caracter);
+                printf("\n");
+                caracter = getchar();
+            }
+            if (caracter == EOF)
+            {
+                printf("Fin de texto: ");
+                putchar(caracter);
+                printf("\n");
+            }
+            else
+            {
+                printf("Cadena: ");
+                while (caracter != EOF && caracter != ',' && isspace(caracter) == 0)
+                {
+                    putchar(caracter);
+                    caracter = getchar();
+                }
+                printf("\n");
+            }
+        }
+        else
+        {
+            caracter = getchar();
+        }
+    } while (caracter != EOF);
+
+*/
+    } while (caracter != EOF);
 
     return 0;
 }
-
-
