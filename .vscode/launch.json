@@ -8,7 +8,7 @@
             "name": "gcc.exe - Compilar y depurar el archivo activo",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+            "program": "${fileDirname}\\${workspaceFolderBasename}.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "C:\\mingw-w64\\x86_64-8.1.0-win32-seh-rt_v6-rev0\\mingw64\\bin",

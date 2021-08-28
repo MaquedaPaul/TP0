@@ -1,17 +1,11 @@
 #include "scanner.h"
 
-int main()
+void get_token()
 {
-    get_token();
-    return 0;
-}
-
-/*
     char caracter;
     caracter = getchar();
     do
     {
-        caracter = getchar();
         if (isspace(caracter) == 0)
         {
             if (caracter == ',')
@@ -21,12 +15,7 @@ int main()
                 printf("\n");
                 caracter = getchar();
             }
-            if (caracter == EOF)
-            {
-                printf("Fin de texto: ");
-                putchar(caracter);
-                printf("\n");
-            }
+
             else
             {
                 printf("Cadena: ");
@@ -42,6 +31,12 @@ int main()
         {
             caracter = getchar();
         }
-    } while (caracter != EOF);
 
-*/
+    } while (caracter != EOF);
+    if (caracter == EOF)
+    {
+        printf("Fin de texto: ");
+        putchar(caracter);
+        printf("\n");
+    }
+}
