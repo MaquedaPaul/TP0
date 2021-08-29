@@ -1,37 +1,43 @@
 #include "scanner.h"
 
-    enum token
-            {
+enum token
+{
     FDT, //Fin de texto
     SEP, //Separador
     CAD  //Cadena
-            };
-void Print_Token(int Token){
-    if (Token == FDT){
+};
+void Print_Token(int Token)
+{
+    if (Token == FDT)
+    {
         printf("Fin de Texto: ");
     }
-    if (Token == SEP){
+    if (Token == SEP)
+    {
         printf("Separador: ");
     }
-    if (Token == CAD){
+    if (Token == CAD)
+    {
         printf("Cadena: ");
     }
 }
 
-void Print_TokenV2(int Token){
-    switch (Token) {
-        case FDT:
-            printf("Fin de Texto: ");
-            break;
-            case SEP:
-                printf("Separador: ");
-                break;
-                case CAD:
-                    printf("Cadena: ");
-                    break;
-                    default:
-                        printf("No es un token valido");
-                        break;
+void Print_TokenV2(int Token)
+{
+    switch (Token)
+    {
+    case FDT:
+        printf("Fin de Texto: ");
+        break;
+    case SEP:
+        printf("Separador: ");
+        break;
+    case CAD:
+        printf("Cadena: ");
+        break;
+    default:
+        printf("No es un token valido");
+        break;
     }
 }
 
@@ -76,5 +82,3 @@ void get_token()
         printf("\n");
     }
 }
-
-
