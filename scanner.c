@@ -1,28 +1,6 @@
 #include "scanner.h"
 
-enum token
-{
-    FDT, //Fin de texto
-    SEP, //Separador
-    CAD  //Cadena
-};
 void Print_Token(int Token)
-{
-    if (Token == FDT)
-    {
-        printf("Fin de Texto: ");
-    }
-    if (Token == SEP)
-    {
-        printf("Separador: ");
-    }
-    if (Token == CAD)
-    {
-        printf("Cadena: ");
-    }
-}
-
-void Print_TokenV2(int Token)
 {
     switch (Token)
     {
@@ -41,44 +19,42 @@ void Print_TokenV2(int Token)
     }
 }
 
-void get_token()
+void get_token(char buffer[])
 {
-
-    char caracter;
-    caracter = getchar();
+    char token;
+    int i = 0;
+    token = getchar();
     do
     {
-        if (isspace(caracter) == 0)
+        if (isspace(token) == 0)
         {
-            if (caracter == ',')
+            if (token == ',')
             {
-                Print_Token(SEP);
-                putchar(caracter);
-                printf("\n");
-                caracter = getchar();
+                buffer[i] = token;
+                i++;
+                token = getchar();
             }
 
             else
             {
-                Print_Token(CAD);
-                while (caracter != EOF && caracter != ',' && isspace(caracter) == 0)
+                while (token != EOF && token != ',' && isspace(token) == 0)
                 {
-                    putchar(caracter);
-                    caracter = getchar();
+                    buffer[i] = token;
+                    i++;
+                    token = getchar();
                 }
-                printf("\n");
+                buffer[i] = '\0';
+                i++;
             }
         }
         else
         {
-            caracter = getchar();
+            token = getchar();
         }
 
-    } while (caracter != EOF);
-    if (caracter == EOF)
+    } while (token != EOF);
+    if (token == EOF)
     {
-        Print_Token(FDT);
-        putchar(caracter);
-        printf("\n");
+        buffer[i] = EOF;
     }
 }

@@ -2,46 +2,37 @@
 
 int main()
 {
-    get_token();
-    return 0;
-}
-
-/*
-    char caracter;
-    caracter = getchar();
-    do
+    const int dim = 126;
+    char buffer[dim];
+    char token;
+    get_token(buffer);
+    for (int i = 0; i < dim; i++)
     {
-        caracter = getchar();
-        if (isspace(caracter) == 0)
+        token = buffer[i];
+        if (token == ',')
         {
-            if (caracter == ',')
-            {
-                printf("Separador: ");
-                putchar(caracter);
-                printf("\n");
-                caracter = getchar();
-            }
-            if (caracter == EOF)
-            {
-                printf("Fin de texto: ");
-                putchar(caracter);
-                printf("\n");
-            }
-            else
-            {
-                printf("Cadena: ");
-                while (caracter != EOF && caracter != ',' && isspace(caracter) == 0)
-                {
-                    putchar(caracter);
-                    caracter = getchar();
-                }
-                printf("\n");
-            }
+            Print_Token(SEP);
+            putchar(token);
+            printf("\n");
+        }
+        else if (token == EOF)
+        {
+            Print_Token(FDT);
+            putchar(token);
+            break;
         }
         else
         {
-            caracter = getchar();
+            Print_Token(CAD);
+            while (token != ',' && token != '\0' && token != EOF)
+            {
+                putchar(token);
+                i++;
+                token = buffer[i];
+            }
+            printf("\n");
         }
-    } while (caracter != EOF);
+    }
 
-*/
+    return 0;
+}
